@@ -8,24 +8,31 @@ const ContactModal = ({
 }) => {
   return (
     <div className="modal fade" id={modalId} tabIndex="-1" aria-hidden="true">
-      <div className="modal-dialog modal-dialog-centered">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title">Editar Contacto</h5>
+      <div className="modal-dialog modal-dialog-centered modal-lg">
+        <div className="modal-content border-0 shadow-sm">
+          <div className="modal-header bg-dark text-white">
+            <h5 className="modal-title fw-bold">
+              <i className="bi bi-pencil-square me-2 text-success"></i>
+              Editar Contacto
+            </h5>
             <button
               type="button"
-              className="btn-close"
+              className="btn-close btn-close-white"
               data-bs-dismiss="modal"
+              aria-label="Cerrar"
             ></button>
           </div>
-          <div className="modal-body">
+
+          <div className="modal-body px-4 py-3">
             {selectedContact && (
               <form
                 onSubmit={handleUpdateContact}
                 encType="multipart/form-data"
+                className="row g-3"
               >
-                <div className="mb-3">
-                  <label className="form-label">Nombre</label>
+                {/* Nombre */}
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">Nombre</label>
                   <input
                     type="text"
                     className="form-control"
@@ -39,8 +46,10 @@ const ContactModal = ({
                     required
                   />
                 </div>
-                <div className="mb-3">
-                  <label className="form-label">Profesión</label>
+
+                {/* Profesión */}
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">Profesión</label>
                   <select
                     className="form-select"
                     value={selectedContact?.profesion || ""}
@@ -60,9 +69,11 @@ const ContactModal = ({
                     ))}
                   </select>
                 </div>
-                <div className="mb-3">
-                  <label className="form-label">
-                    Edad: {selectedContact.edad} años
+
+                {/* Edad */}
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">
+                    Edad: <span className="text-primary">{selectedContact.edad}</span> años
                   </label>
                   <input
                     type="range"
@@ -79,10 +90,11 @@ const ContactModal = ({
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label className="form-label">Sexo</label>
+                {/* Sexo */}
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">Sexo</label>
                   <select
-                    className="form-control"
+                    className="form-select"
                     value={selectedContact.sexo}
                     onChange={(e) =>
                       setSelectedContact({
@@ -97,10 +109,9 @@ const ContactModal = ({
                   </select>
                 </div>
 
-                <div className="mb-3 mt-4">
-                  <label className="form-label">
-                    Cambiar Foto del empleado
-                  </label>
+                {/* Foto */}
+                <div className="col-md-6">
+                  <label className="form-label fw-semibold">Cambiar Foto</label>
                   <input
                     className="form-control form-control-sm"
                     type="file"
@@ -114,7 +125,9 @@ const ContactModal = ({
                   />
                 </div>
 
-                <div className="text-center mt-3">
+                {/* Vista previa */}
+                <div className="col-md-6 text-center">
+                  <label className="form-label fw-semibold">Vista previa</label>
                   <img
                     src={
                       selectedContact?.foto_contacto instanceof File
@@ -124,7 +137,7 @@ const ContactModal = ({
                         : "http://localhost:5174/avatar.png"
                     }
                     alt={selectedContact?.nombre || "Contacto"}
-                    className="img-fluid rounded-circle"
+                    className="img-fluid rounded-circle border border-3 border-success"
                     style={{
                       width: "100px",
                       height: "100px",
@@ -133,9 +146,10 @@ const ContactModal = ({
                   />
                 </div>
 
-                <div className="d-flex justify-content-center mt-5">
-                  <button type="submit" className="btn btn-primary">
-                    Guardar cambios &nbsp; <i className="bi bi-arrow-right"></i>
+                {/* Botón */}
+                <div className="col-12 text-center mt-4">
+                  <button type="submit" className="btn btn-success px-4 fw-bold">
+                    Guardar cambios &nbsp; <i className="bi bi-check-circle-fill"></i>
                   </button>
                 </div>
               </form>

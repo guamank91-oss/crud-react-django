@@ -1,85 +1,96 @@
 import useContacts from "../hooks/useContacts";
 import { profesiones } from "../data/profesiones";
+import { Link } from "react-router-dom";
 
 const Formulario = () => {
   const { register, handleSubmit, watch, errors, onSubmit } = useContacts();
-
-  // Obtenemos el valor del checkbox en tiempo real
   const hablaIngles = watch("habla_ingles", false);
 
   return (
-    <>
-      <h2 className="text-center fw-bold border-bottom mb-4 p-2">
-        Agregar Contacto
+    <section className="card border-0 shadow-lg p-4 rounded-4 bg-light">
+      <h2 className="text-center fw-bold text-success mb-4">
+        <i className="bi bi-person-plus-fill me-2"></i> Agregar Contacto
       </h2>
-      <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-        <div className="mb-3">
-          <label htmlFor="nombre" className="form-label">
-            Nombre
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        encType="multipart/form-data"
+        className="row g-4"
+      >
+        {/* Nombre */}
+        <div className="col-md-6">
+          <label htmlFor="nombre" className="form-label fw-semibold">
+            Nombre completo <span className="text-danger">*</span>
           </label>
           <input
             type="text"
-            className="form-control"
+            className={`form-control shadow-sm ${errors.nombre ? "is-invalid" : ""}`}
             {...register("nombre", { required: "El nombre es obligatorio" })}
           />
           {errors.nombre && (
-            <small className="text-danger">{errors.nombre.message}</small>
+            <div className="invalid-feedback">{errors.nombre.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="profesion" className="form-label">
-            Profesión
+        {/* Profesión */}
+        <div className="col-md-6">
+          <label htmlFor="profesion" className="form-label fw-semibold">
+            Profesión <span className="text-danger">*</span>
           </label>
           <select
-            className="form-select"
+            className={`form-select shadow-sm ${errors.profesion ? "is-invalid" : ""}`}
             {...register("profesion", { required: "Selecciona una profesión" })}
           >
-            <option value="">Seleccione una profesión</option>
+            <option value="">Seleccione una opción</option>
             {profesiones.map((profesion) => (
               <option key={profesion} value={profesion}>
                 {profesion}
               </option>
             ))}
           </select>
-
           {errors.profesion && (
-            <small className="text-danger">{errors.profesion.message}</small>
+            <div className="invalid-feedback">{errors.profesion.message}</div>
           )}
         </div>
 
-        <div className="mb-3">
-          <label className="form-label">Sexo</label>
-          <div className="form-check">
-            <label className="form-check-label">
+        {/* Sexo */}
+        <div className="col-md-6">
+          <label className="form-label fw-semibold">Sexo <span className="text-danger">*</span></label>
+          <div className="d-flex gap-4 mt-2">
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="radio"
                 {...register("sexo", { required: "Selecciona un sexo" })}
                 value="Masculino"
+                id="sexoMasculino"
               />
-              Masculino
-            </label>
-          </div>
-          <div className="form-check">
-            <label className="form-check-label">
+              <label className="form-check-label" htmlFor="sexoMasculino">
+                Masculino
+              </label>
+            </div>
+            <div className="form-check">
               <input
                 className="form-check-input"
                 type="radio"
                 {...register("sexo")}
                 value="Femenino"
+                id="sexoFemenino"
               />
-              Femenino
-            </label>
+              <label className="form-check-label" htmlFor="sexoFemenino">
+                Femenino
+              </label>
+            </div>
           </div>
           {errors.sexo && (
-            <small className="text-danger">{errors.sexo.message}</small>
+            <small className="text-danger d-block mt-1">{errors.sexo.message}</small>
           )}
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="edadRange" className="form-label">
-            Edad: <span>{watch("edad") || 18}</span> años
+        {/* Edad */}
+        <div className="col-md-6">
+          <label htmlFor="edadRange" className="form-label fw-semibold">
+            Edad: <span className="text-primary">{watch("edad") || 18}</span> años
           </label>
           <input
             type="range"
@@ -90,36 +101,54 @@ const Formulario = () => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="ingles">¿Habla inglés?</label>
-          <div className="form-check form-switch">
+        {/* Inglés */}
+        <div className="col-md-6">
+          <label htmlFor="ingles" className="form-label fw-semibold">
+            ¿Habla inglés?
+          </label>
+          <div className="form-check form-switch mt-2">
             <input
               className="form-check-input"
               type="checkbox"
               {...register("habla_ingles")}
+              id="hablaIngles"
             />
-            <label className="form-check-label">
+            <label className="form-check-label" htmlFor="hablaIngles">
               {hablaIngles ? "Sí" : "No"}
             </label>
           </div>
         </div>
 
-        <div className="mb-3 mt-4">
-          <label className="form-label">Cambiar Foto del empleado</label>
+        {/* Foto */}
+        <div className="col-md-6">
+          <label className="form-label fw-semibold">Foto del empleado</label>
           <input
-            className="form-control form-control-sm"
+            className="form-control form-control-sm shadow-sm"
             type="file"
-            name="avatar"
             {...register("foto_contacto")}
             accept="image/png, image/jpeg"
           />
         </div>
 
-        <button type="submit" className="btn btn-primary w-100">
-          Guardar Contacto &nbsp; <i className="bi bi-arrow-right"></i>
-        </button>
+        {/* Botón */}
+        <div className="col-12 text-center mt-3">
+          <button type="submit" className="btn btn-success px-5 py-2 fw-bold">
+            <i className="bi bi-check-circle-fill me-2"></i> Guardar Contacto
+            
+          </button>
+         <div className="d-flex justify-content-end mt-3">
+  <button
+    type="button"
+    className="btn btn-outline-primary fw-bold px-4 py-2 shadow-sm"
+    onClick={() => window.open("/contactos", "_blank")}
+  >
+    Ver Lista de Contactos &nbsp; <i className="bi bi-box-arrow-up-right"></i>
+  </button>
+</div>
+ 
+        </div>
       </form>
-    </>
+    </section>
   );
 };
 
