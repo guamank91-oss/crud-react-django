@@ -43,28 +43,26 @@ const useContacts = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log("Datos recibidos:", data);
+  console.log("Datos recibidos:", data);
 
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      formData.append(key, key === "foto_contacto" ? value[0] : value);
+  const formData = new FormData();
+  Object.entries(data).forEach(([key, value]) => {
+    formData.append(key, key === "foto_contacto" ? value[0] : value);
+  });
+
+  try {
+    const response = await axios.post(`${URL_API}nuevo/`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
     });
+    console.log("Respuesta del servidor**:", response.data);
 
-    try {
-      const response = await axios.post(`${URL_API}nuevo/`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      console.log("Respuesta del servidor**:", response.data);
-      //setContacts([...response.data]);
+    miToast("Contacto agregado correctamente", "success");
+    reset(); // ✅ Reinicia el formulario
+  } catch (error) {
+    console.error("Error al guardar contacto:", error);
+  }
+};
 
-      // setContacts((prevContacts) => [...prevContacts, response.data]); // Agregar nuevo contacto directamente
-      // fetchContacts();
-      // reset(); // Resetea el formulario después de enviar los datos
-      miToast("Contacto agregado correctamente", "success");
-    } catch (error) {
-      console.error("Error al guardar contacto:", error);
-    }
-  };
 
   const eliminarContacto = async (id) => {
     try {
@@ -123,5 +121,8 @@ const useContacts = () => {
     reset,
   };
 };
+
+
+
 
 export default useContacts;
