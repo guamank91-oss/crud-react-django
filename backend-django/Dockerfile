@@ -1,18 +1,19 @@
-# Imagen base oficial de Python
 FROM python:3.10-slim
 
-# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar archivos del proyecto
 COPY . /app
 
-# Instalar dependencias
-RUN pip install --upgrade pip \
-    && pip install -r requirements.txt
+# Instalar dependencias del sistema
+RUN apt-get update && apt-get install -y \
+    default-libmysqlclient-dev \
+    build-essential \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-# Exponer el puerto por defecto de Django
+# Instalar dependencias de Python
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
 EXPOSE 8000
 
-# Comando para ejecutar el servidor
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
