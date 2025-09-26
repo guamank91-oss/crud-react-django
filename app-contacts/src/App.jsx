@@ -34,6 +34,7 @@ function App() {
           {/* Página separada para la lista de contactos */}
           <Route path="/contactos" element={<Contacts />} />
         </Routes>
+        
       </div>
     </Router>
   );
