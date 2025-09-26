@@ -37,6 +37,7 @@ Una aplicación web moderna para la gestión completa de contactos, desarrollada
 - 🖼️ Soporte para upload de imágenes
 - 🌐 API RESTful completa
 
+<img width="1920" height="1080" alt="Captura de pantalla (888)" src="https://github.com/user-attachments/assets/295603ac-c069-4a1e-8722-6eff8ac9ac58" />
 
 ## 🛠 Instalación y Uso
 
