@@ -48,15 +48,20 @@ Una aplicación web moderna para la gestión completa de contactos, desarrollada
 1️⃣ Clona este repositorio:
 ```bash
 git clone https://github.com/guamank91-oss/crud-react-django.git
-
-cd-app-contactos 
-2️⃣ Instala las dependencias:
-```bash
- npm install
 ```
-3️⃣ Inicia la aplicación:
+ 
+2️⃣ Frontend:
 ```bash
- npm run dev
+ cd app-contactos
+npm install
+npm run dev
+```
+3️⃣ Backend:
+```bash
+ cd backend-django
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
 ```
 cd backend-django
 
