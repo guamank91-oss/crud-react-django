@@ -1,7 +1,13 @@
 # 📱 CRUD FullStack - Gestión de Contactos  
 ### **Desarrollado por [Tu Nombre]**
 
-![Vista previa](https://raw.githubusercontent.com/guamank91-oss/crud-react-django/main/screenshot.png)
+A continuacion se muestra la interfaz para crear un usuario nuevo 
+<img width="1919" height="932" alt="Captura de pantalla 2025-09-25 205014" src="https://github.com/user-attachments/assets/7e3a5a4d-8e65-48c5-9115-e3596de9c4bd" />
+
+siguiente se muestra la lista de contactos 
+<img width="1919" height="925" alt="Captura de pantalla 2025-09-25 205025" src="https://github.com/user-attachments/assets/8412d205-794e-46dd-a4db-fcfd7da03013" />
+
+
 
 Una aplicación web moderna para la gestión completa de contactos, desarrollada con **React frontend** y **Django backend**.
 
@@ -37,15 +43,12 @@ Una aplicación web moderna para la gestión completa de contactos, desarrollada
 - 🖼️ Soporte para upload de imágenes
 - 🌐 API RESTful completa
 
-<img width="1920" height="1080" alt="Captura de pantalla (888)" src="https://github.com/user-attachments/assets/295603ac-c069-4a1e-8722-6eff8ac9ac58" />
-
 ## 🛠 Instalación y Uso
 
 1️⃣ Clona este repositorio:
 ```bash
 git clone https://github.com/guamank91-oss/crud-react-django.git
-cd crud-full-stack-react-python-django-mysql
-```
+
 cd-app-contactos 
 2️⃣ Instala las dependencias:
 ```bash
@@ -100,18 +103,11 @@ Manejo de Archivos: Upload seguro de imágenes
 
 
 Desarrollador
-Tu Nombre
+kevin alfonso
 
 📧 Email: kevin11_1990@hotmail.com
 
-🐙 GitHub: @guamank91-oss
+🐙 GitHub: guamank91-oss
 
-🙌 Agradecimientos
-Django - El framework web para perfeccionistas con fechas límite
 
-React - Biblioteca para interfaces de usuario
 
-Bootstrap - Framework CSS para diseño responsive
-
-## Integrante
-- Alejandro alfonso
