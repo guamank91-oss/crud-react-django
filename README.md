@@ -1,5 +1,5 @@
 # 📱 CRUD FullStack - Gestión de Contactos  
-### **Desarrollado por [Tu Nombre]**
+### **Desarrollado por [kevin alejandro alfonso guaman ]**
 
 A continuacion se muestra la interfaz para crear un usuario nuevo 
 <img width="1919" height="932" alt="Captura de pantalla 2025-09-25 205014" src="https://github.com/user-attachments/assets/7e3a5a4d-8e65-48c5-9115-e3596de9c4bd" />
@@ -67,14 +67,6 @@ python manage.py migrate
 
 # Ejecutar servidor
 python manage.py runserver
-
-🌐 Endpoints de la API
-Método	Endpoint	Descripción
-GET	/api-contactos/	Listar todos los contactos
-POST	/api-contactos/nuevo/	Crear nuevo contacto
-GET	/api-contactos/{id}/	Obtener contacto específico
-PUT	/api-contactos/{id}/actualizar/	Actualizar contacto
-DELETE	/api-contactos/{id}/eliminar/	Eliminar contacto
 
 
 🎯 Características Destacadas
