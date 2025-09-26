@@ -63,15 +63,7 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
-cd backend-django
 
-# Instalar dependencias
-pip install -r requirements.txt
-# Configurar base de datos
-python manage.py migrate
-
-# Ejecutar servidor
-python manage.py runserver
 
 
 🎯 Características Destacadas
